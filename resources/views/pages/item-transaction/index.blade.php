@@ -1,3 +1,6 @@
+@php
+$status = request()->query('status');
+@endphp
 @extends('layouts.backend')
 
 @section('css')
@@ -21,31 +24,19 @@
 @endsection
 
 @section('content')
-<x-hero-section title="Item Transaction"
-    subtitle="List of all item transactions, you can add, edit and delete item transaction" :breadcrumbs="[
+<x-hero-section title="{{ strtoupper($status) }} Item Transaction"
+    subtitle="List of all {{ $status }} item transactions, you can add, edit and delete" :breadcrumbs="[
     ['label' => 'Management', 'url' => 'javascript:void(0)'],
     ['label' => 'Item Transaction'],
 ]" />
 <!-- Page Content -->
 <div class="content">
-    <!-- Info -->
-    <div class="block block-rounded">
-        <div class="block-header block-header-default">
-            <h3 class="block-title">Plugin Example</h3>
-        </div>
-        <div class="block-content fs-sm text-muted">
-            <p>
-                This page showcases how easily you can add a plugin’s JS/CSS assets and init it using custom JS code.
-            </p>
-        </div>
-    </div>
-    <!-- END Info -->
 
     <!-- Dynamic Table Full -->
     <div class="block block-rounded" id="block-item-transaction">
         <div class="block-header block-header-default">
             <h3 class="block-title">
-                Item transaction <small>List</small>
+                {{ $status }} Item transaction <small>List</small>
             </h3>
             <div class="block-options">
                 @can('item-transaction.create')
