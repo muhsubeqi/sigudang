@@ -25,37 +25,62 @@ const dtTable =$('#item-transaction-table').DataTable({
 })
 
 $(formModal).on('show.bs.modal', function (event) {
-    let button = $(event.relatedTarget) 
-    let id = button.data('id'); 
+    let button = $(event.relatedTarget)
+    let id = button.data('id');
     let invoice = button.data('invoice')
     let item = button.data('item_id')
-    let user = button.data('user_id')
+    let stock = button.data('stock')
     let qty = button.data('qty')
     let date = button.data('date')
-    
+
+    const format = $('#item-transaction-table').DataTable().ajax.json().codeFormat
+
     $(this).find('.block-title').text( id ? 'Edit' : 'Create' )
     $(this).find('#id').val(id ?? '')
-    $(this).find('#invoice').val(invoice ?? '')
+    $(this).find('#invoice').val(invoice ?? format)
     $(this).find('#item-id').val(item ?? '').change()
     $(this).find('#qty').val(qty ?? '')
+    $(this).find('#stock').val(stock ?? '')
     $(this).find('#date').val(date ?? '')
-   
+
+    $('#item-id').on('change', function () {
+      let item = $(this).val()
+      $.get({
+        url: `${BASE_URL}/item/select/${item}`
+      })
+        .done(result => {
+          $('#stock').val(result.stock)
+        })
+    })
+
+    $('#qty').on('keyup', function () {
+      let qty = $(this).val()
+      let stock = parseInt($('#stock').val())
+
+      let stockTotal
+      if (urlStatus == 'in') {
+        stockTotal = parseInt(stock) + parseInt(qty)
+      }else{
+        stockTotal = parseInt(stock) - parseInt(qty)
+      }
+      $('#stock-total').val(stockTotal)
+    })
 });
 
 $(document).ready(function () {
     One.helpers("jq-validation")
     $(itemTransactionForm).validate({
         rules: {
-            invoice: { 
+            invoice: {
                 required: true,
             },
-            item_id: { 
+            item_id: {
                 required: true
             },
-            qty: { 
+            qty: {
                 required: true
             },
-            date: { 
+            date: {
                 required: true,
             },
         },
@@ -75,7 +100,7 @@ $(formModal).on('hidden.bs.modal', function () {
 $(itemTransactionForm).on('submit', function (e) {
     e.preventDefault()
     console.log('asd');
-    
+
     if (!$(this).valid()) {
         return
     }
@@ -134,27 +159,6 @@ dtTable.on('click', '.btn-delete', function () {
                 })
         }
     })
-})
-
-dtTable.on('change', '.btn-status', function () {
-    const id = $(this).data('id')
-    const status = $(this).val()
-    const url = `${BASE_URL}/item-transaction/status/${id}`
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': CSRF_TOKEN
-        }
-    })
-    $.post({
-            url: url,
-            data: {
-                status: status
-            }
-        })
-        .done(result => {
-            sweetAlert(result.status, result.message)
-            dtTable.ajax.reload(null, false)
-        })
 })
 
 btnRefresh.on('click', function () {

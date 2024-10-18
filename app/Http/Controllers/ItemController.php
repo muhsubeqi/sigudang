@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\FileStorage;
+use App\Helper\AutoGetCode;
 use App\Models\Item;
 use App\Models\Type;
 use App\Models\Unit;
@@ -49,6 +50,7 @@ class ItemController extends Controller
     public function list(Request $request)
     {
         $data = Item::select('*');
+        $codeFormat = AutoGetCode::store($data, 'B', 'code');
 
         return DataTables::eloquent($data)
             ->addIndexColumn()
@@ -67,6 +69,7 @@ class ItemController extends Controller
                 return view('pages.item.partials.action', ['row' => $item]);
             })
             ->rawColumns(['image', 'action'])
+            ->with('codeFormat', $codeFormat)
             ->toJson();
     }
 
@@ -155,5 +158,10 @@ class ItemController extends Controller
             ];
         }
         return response()->json($data);
+    }
+
+    public function select(Item $item)
+    {
+        return response()->json($item);
     }
 }

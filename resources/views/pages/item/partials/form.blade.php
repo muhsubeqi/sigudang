@@ -14,9 +14,9 @@
                     <div class="block-content">
                         <input type="hidden" name="id" id="id">
                         <div class="row mb-3">
-                            <label for="code" class="col-sm-3 col-form-label">Code</label>
+                            <label for="code" class="col-sm-3 col-form-label">Code </label>
                             <div class="col-sm-9">
-                                <input type="code" class="form-control" id="code" name="code" placeholder="Enter Code">
+                                <input type="text" class="form-control form-control-alt code" id="code" name="code" placeholder="Enter Code" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">

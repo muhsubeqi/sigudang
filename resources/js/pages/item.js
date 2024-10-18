@@ -27,34 +27,35 @@ const dtTable =$('#item-table').DataTable({
 })
 
 $(formModal).on('show.bs.modal', function (event) {
-    let button = $(event.relatedTarget) 
-    let id = button.data('id'); 
+    let button = $(event.relatedTarget)
+    let id = button.data('id');
     let code = button.data('code')
     let name = button.data('name')
     let type = button.data('type_id')
     let unit = button.data('unit_id')
-    
     let stock = button.data('stock')
-    
+
+    const format = $('#item-table').DataTable().ajax.json().codeFormat
+
     $(this).find('.block-title').text( id ? 'Edit' : 'Create' )
     $(this).find('#id').val(id ?? '')
-    $(this).find('#code').val(code ?? '')
+    $(this).find('#code').val(code ?? format)
     $(this).find('#name').val(name ?? '')
     $(this).find('#type-id').val(type ?? '').change()
     $(this).find('#unit-id').val(unit ?? '').change()
     $(this).find('#stock').val(stock ?? '')
-   
+
 });
 
 $(document).ready(function () {
     One.helpers("jq-validation")
     $(itemForm).validate({
         rules: {
-            name: { 
+            name: {
                 required: true,
                 minlength: 3
             },
-            role: { 
+            role: {
                 required: true
             },
         },

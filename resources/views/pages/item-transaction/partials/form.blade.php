@@ -16,8 +16,8 @@
                         <div class="row mb-3">
                             <label for="invoice" class="col-sm-3 col-form-label">Invoice</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="invoice" name="invoice"
-                                    placeholder="Enter Invoice">
+                                <input type="text" class="form-control form-control-alt" id="invoice" name="invoice"
+                                    placeholder="Enter Invoice" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">

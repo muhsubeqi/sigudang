@@ -42,6 +42,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/store', [ItemController::class, 'store'])->name('store');
         Route::post('/update/{item}', [ItemController::class, 'update'])->name('update');
         Route::post('/destroy/{item}', [ItemController::class, 'destroy'])->name('destroy');
+
+        Route::get('/select/{item}', [ItemController::class, 'select'])->name('select');
     });
 
     Route::prefix('item-transaction')->middleware('can:item-transaction.active')->name('item-transaction.')->group(function () {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\AutoGetCode;
 use App\Models\Item;
 use App\Models\ItemTransaction;
 use Illuminate\Http\Request;
@@ -44,6 +45,12 @@ class ItemTransactionController extends Controller
     {
         $data = ItemTransaction::where('status', $status)->select('*');
 
+        if ($status == 'in'){
+            $codeFormat = AutoGetCode::store($data, 'TM', 'code');
+        }else{
+            $codeFormat = AutoGetCode::store($data, 'TK', 'code');
+        }
+
         return DataTables::eloquent($data)
             ->addIndexColumn()
             ->editColumn('item', function (ItemTransaction $itemTransaction) {
@@ -56,6 +63,7 @@ class ItemTransactionController extends Controller
                 return view('pages.item-transaction.partials.action', ['row' => $itemTransaction]);
             })
             ->rawColumns(['action'])
+            ->with('codeFormat', $codeFormat)
             ->toJson();
     }
 
