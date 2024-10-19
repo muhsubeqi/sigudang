@@ -21,9 +21,9 @@
 @endsection
 
 @section('content')
-<x-hero-section title="Type" subtitle="List of all types, you can add, edit and delete type" :breadcrumbs="[
-    ['label' => 'Management', 'url' => 'javascript:void(0)'],
-    ['label' => 'Type'],
+<x-hero-section title="Jenis Barang" :breadcrumbs="[
+    ['label' => 'Master', 'url' => 'javascript:void(0)'],
+    ['label' => 'Jenis Barang'],
 ]" />
 <!-- Page Content -->
 <div class="content">
@@ -36,7 +36,7 @@
             <div class="block block-rounded" id="block-type">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">
-                        Type <small>List</small>
+                        Daftar Jenis Barang
                     </h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-toggle="block-option" id="btn-refresh">
@@ -53,11 +53,11 @@
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 80px;">#</th>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Desc</th>
+                                <th>Foto</th>
+                                <th>Nama</th>
+                                <th>Keterangan</th>
                                 @if (Gate::allows('type.edit') || Gate::allows('type.delete'))
-                                <th>Action</th>
+                                <th>Aksi</th>
                                 @endif
                             </tr>
                         </thead>

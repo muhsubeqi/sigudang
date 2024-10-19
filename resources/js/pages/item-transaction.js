@@ -35,7 +35,7 @@ $(formModal).on('show.bs.modal', function (event) {
 
     const format = $('#item-transaction-table').DataTable().ajax.json().codeFormat
 
-    $(this).find('.block-title').text( id ? 'Edit' : 'Create' )
+    $(this).find('.block-title').text( id ? 'Edit' : 'Tambah' )
     $(this).find('#id').val(id ?? '')
     $(this).find('#invoice').val(invoice ?? format)
     $(this).find('#item-id').val(item ?? '').change()

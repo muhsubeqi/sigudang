@@ -14,20 +14,21 @@
                     <div class="block-content">
                         <input type="hidden" name="id" id="id">
                         <div class="row mb-3">
-                            <label for="invoice" class="col-sm-3 col-form-label">Invoice</label>
+                            <label for="invoice" class="col-sm-3 col-form-label">ID Transaksi</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control form-control-alt" id="invoice" name="invoice"
-                                    placeholder="Enter Invoice" readonly>
+                                    placeholder="Masukkan ID Transaksi" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="date" class="col-sm-3 col-form-label">Date</label>
+                            <label for="date" class="col-sm-3 col-form-label">Tanggal</label>
                             <div class="col-sm-9">
-                                <input type="date" class="form-control" id="date" name="date" placeholder="Enter Date">
+                                <input type="date" class="form-control" id="date" name="date"
+                                    placeholder="Masukkan Tanggal">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="item-id" class="col-sm-3 col-form-label">Item</label>
+                            <label for="item-id" class="col-sm-3 col-form-label">Barang</label>
                             <div class="col-sm-9">
                                 <select class="form-select js-select2" name="item_id" id="item-id" style="width:100%">
                                     <option></option>
@@ -38,30 +39,30 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="qty" class="col-sm-3 col-form-label">Quantity</label>
+                            <label for="qty" class="col-sm-3 col-form-label">Jumlah</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" id="qty" name="qty"
-                                    placeholder="Enter Quantity">
+                                    placeholder="Masukkan Jumlah">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="stock" class="col-sm-3 col-form-label">Stock</label>
+                            <label for="stock" class="col-sm-3 col-form-label">Stok Barang</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control form-control-alt" id="stock" name="stock"
-                                    placeholder="Enter Stock" readonly>
+                                    placeholder="0" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="stock-total" class="col-sm-3 col-form-label">Stock Total</label>
+                            <label for="stock-total" class="col-sm-3 col-form-label">Total Stok Barang</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control form-control-alt" id="stock-total"
-                                    name="stock_total" placeholder="Enter Stock Total" readonly>
+                                    name="stock_total" placeholder="0" readonly>
                             </div>
                         </div>
                     </div>
                     <div class="block-content block-content-full text-end bg-body">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-alt-danger" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-alt-success">Simpan</button>
                     </div>
                 </div>
             </div>

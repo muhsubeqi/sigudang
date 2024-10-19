@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-  <title>OneUI - Bootstrap 5 Admin Template &amp; UI Framework</title>
+  <title>SIPBAGU - Sistem Informasi Pengadaan Barang Gudang</title>
 
-  <meta name="description" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave">
-  <meta name="author" content="pixelcave">
+  <meta name="description" content="SIPBAGU - Sistem Informasi Pengadaan Barang Gudang">
+  <meta name="author" content="muhsubeqi">
   <meta name="robots" content="index, follow">
   <meta name="base-url" content="{{ url('/') }}">
   <meta name="csrf-token" content="{{ csrf_token() }}">

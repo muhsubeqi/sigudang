@@ -41,6 +41,8 @@ class PermissionTableSeeder extends Seeder
             ['name' => 'item.edit', 'guard_name' => 'web', 'group_name' => 'Item'],
             ['name' => 'item.delete', 'guard_name' => 'web', 'group_name' => 'Item'],
 
+            ['name' => 'report.active', 'guard_name' => 'web', 'group_name' => 'Report'],
+
             ['name' => 'item-transaction.active', 'guard_name' => 'web', 'group_name' => 'Item Transaction'],
             ['name' => 'item-transaction.create', 'guard_name' => 'web', 'group_name' => 'Item Transaction'],
             ['name' => 'item-transaction.edit', 'guard_name' => 'web', 'group_name' => 'Item Transaction'],

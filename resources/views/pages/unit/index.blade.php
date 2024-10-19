@@ -21,9 +21,9 @@
 @endsection
 
 @section('content')
-<x-hero-section title="Unit" subtitle="List of all units, you can add, edit and delete unit" :breadcrumbs="[
-    ['label' => 'Management', 'url' => 'javascript:void(0)'],
-    ['label' => 'Unit'],
+<x-hero-section title="Satuan" :breadcrumbs="[
+    ['label' => 'Master', 'url' => 'javascript:void(0)'],
+    ['label' => 'Satuan'],
 ]" />
 <!-- Page Content -->
 <div class="content">
@@ -36,7 +36,7 @@
             <div class="block block-rounded" id="block-unit">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">
-                        Unit <small>List</small>
+                        Daftar Satuan
                     </h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-toggle="block-option" id="btn-refresh">
@@ -53,9 +53,9 @@
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 80px;">#</th>
-                                <th>Name</th>
+                                <th>Nama Satuan</th>
                                 @if (Gate::allows('unit.edit') || Gate::allows('unit.delete'))
-                                <th>Action</th>
+                                <th>Aksi</th>
                                 @endif
                             </tr>
                         </thead>

@@ -1,7 +1,7 @@
 <div class="block block-rounded">
     <div class="block-header block-header-default">
         <h3 class="block-title">
-            Type <small>Form</small>
+            Form Jenis Barang
         </h3>
         <div class="block-options">
             <button type="button" class="btn-block-option" data-toggle="block-option"
@@ -12,19 +12,19 @@
         <form id="type-form" method="post" action="" enctype="multipart/form-data">
             <input type="hidden" name="id" id="id">
             <div class="row mb-3">
-                <label for="name" class="col-sm-3 col-form-label">Name</label>
+                <label for="name" class="col-sm-3 col-form-label">Nama</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="status" class="col-sm-3 col-form-label">Desc</label>
+                <label for="status" class="col-sm-3 col-form-label">Ket.</label>
                 <div class="col-sm-9">
                     <textarea class="form-control" name="description" id="description"></textarea>
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="image" class="col-sm-3 col-form-label">Image</label>
+                <label for="image" class="col-sm-3 col-form-label">Foto</label>
                 <div class="col-sm-9">
                     <input type="file" class="form-control" name="image" id="image">
                 </div>
@@ -32,9 +32,9 @@
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label"></label>
                 <div class="col-sm-9">
-                    <button type="submit" class="btn btn-primary" id="btn-save">
-                        <i class="fa fa-save"></i>
-                        Save
+                    <button type="submit" class="btn btn-alt-success" id="btn-save">
+                        <i class="fa fa-save me-1"></i>
+                        Simpan
                     </button>
                 </div>
             </div>

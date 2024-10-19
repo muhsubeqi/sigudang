@@ -21,9 +21,9 @@
 @endsection
 
 @section('content')
-<x-hero-section title="Item" subtitle="List of all items, you can add, edit and delete item" :breadcrumbs="[
-    ['label' => 'Management', 'url' => 'javascript:void(0)'],
-    ['label' => 'Item'],
+<x-hero-section title="Data Barang" :breadcrumbs="[
+    ['label' => 'Master', 'url' => 'javascript:void(0)'],
+    ['label' => 'Data Barang'],
 ]" />
 <!-- Page Content -->
 <div class="content">
@@ -43,15 +43,13 @@
     <!-- Dynamic Table Full -->
     <div class="block block-rounded" id="block-item">
         <div class="block-header block-header-default">
-            <h3 class="block-title">
-                Item <small>List</small>
-            </h3>
+            @can('item.create')
+            <button type="button" class="btn btn-sm btn-alt-primary" data-bs-toggle="modal"
+                data-bs-target="#form-modal">
+                <i class="si si-plus me-1"></i> Tambah
+            </button>
+            @endcan
             <div class="block-options">
-                @can('item.create')
-                <button type="button" class="btn-block-option" data-bs-toggle="modal" data-bs-target="#form-modal">
-                    <i class="si si-plus"></i>
-                </button>
-                @endcan
                 <button type="button" class="btn-block-option" data-toggle="block-option" id="btn-refresh">
                     <i class="si si-refresh"></i>
                 </button>
@@ -66,14 +64,14 @@
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 80px;">#</th>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Unit</th>
-                        <th>Type</th>
-                        <th>Stock</th>
-                        <th class="text-start" class="d-none d-sm-table-cell">Image</th>
+                        <th>ID Barang</th>
+                        <th>Nama Barang</th>
+                        <th>Satuan</th>
+                        <th>Jenis</th>
+                        <th>Stok</th>
+                        <th class="text-start" class="d-none d-sm-table-cell">Foto</th>
                         @if (Gate::allows('item.edit') || Gate::allows('item.delete'))
-                        <th style="width: 10%;">Action</th>
+                        <th style="width: 10%;">Aksi</th>
                         @endif
                     </tr>
                 </thead>

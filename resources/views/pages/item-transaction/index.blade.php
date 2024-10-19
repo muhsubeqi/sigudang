@@ -24,26 +24,21 @@ $status = request()->query('status');
 @endsection
 
 @section('content')
-<x-hero-section title="{{ strtoupper($status) }} Item Transaction"
-    subtitle="List of all {{ $status }} item transactions, you can add, edit and delete" :breadcrumbs="[
-    ['label' => 'Management', 'url' => 'javascript:void(0)'],
-    ['label' => 'Item Transaction'],
+<x-hero-section title="{{ $status === 'in' ? 'Barang Masuk' : 'Barang Keluar' }}" :breadcrumbs="[
+    ['label' => 'Transaksi', 'url' => 'javascript:void(0)'],
 ]" />
 <!-- Page Content -->
 <div class="content">
-
     <!-- Dynamic Table Full -->
     <div class="block block-rounded" id="block-item-transaction">
         <div class="block-header block-header-default">
-            <h3 class="block-title">
-                {{ $status }} Item transaction <small>List</small>
-            </h3>
+            @can('item-transaction.create')
+            <button type="button" class="btn btn-sm btn-alt-primary" data-bs-toggle="modal"
+                data-bs-target="#form-modal">
+                <i class="si si-plus me-1"></i> Tambah
+            </button>
+            @endcan
             <div class="block-options">
-                @can('item-transaction.create')
-                <button type="button" class="btn-block-option" data-bs-toggle="modal" data-bs-target="#form-modal">
-                    <i class="si si-plus"></i>
-                </button>
-                @endcan
                 <button type="button" class="btn-block-option" data-toggle="block-option" id="btn-refresh">
                     <i class="si si-refresh"></i>
                 </button>
@@ -58,13 +53,13 @@ $status = request()->query('status');
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 80px;">#</th>
-                        <th>Invoice</th>
-                        <th>Item</th>
-                        <th>Qty</th>
-                        <th>Date</th>
-                        <th>User</th>
+                        <th>ID Transaksi</th>
+                        <th>Barang</th>
+                        <th>Jumlah</th>
+                        <th>Tanggal</th>
+                        <th>Dibuat Oleh</th>
                         @if (Gate::allows('item-transaction.edit') || Gate::allows('item-transaction.delete'))
-                        <th style="width: 10%;">Action</th>
+                        <th style="width: 10%;">Aksi</th>
                         @endif
                     </tr>
                 </thead>

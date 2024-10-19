@@ -8,7 +8,7 @@
     @can('unit.delete')
     <a class="btn btn-sm btn-alt-danger btn-delete" data-bs-toggle="tooltip" aria-label="Delete"
         data-id="{{ $row->id }}" data-bs-original-title="Delete">
-        <i class="fa fa-fw fa-times text-danger"></i>
+        <i class="fa fa-fw fa-trash text-danger"></i>
     </a>
     @endcan
 </td>

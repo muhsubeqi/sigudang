@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ItemTransactionController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UnitController;
@@ -14,11 +16,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('pages.dashboard.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::middleware('auth')->group(function () {
+    Route::prefix('dashboard')->name('dashboard.')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('index');
+    });
 
     Route::prefix('unit')->middleware('can:unit.active')->name('unit.')->group(function () {
         Route::get('/', [UnitController::class, 'index'])->name('index');
@@ -52,6 +54,19 @@ Route::middleware('auth')->group(function () {
         Route::post('/store/{status}', [ItemTransactionController::class, 'store'])->name('store');
         Route::post('/update/{itemTransaction}/{status}', [ItemTransactionController::class, 'update'])->name('update');
         Route::post('/destroy/{itemTransaction}/{status}', [ItemTransactionController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('report')->middleware('can:report.active')->name('report.')->group(function () {
+        Route::prefix('stock')->name('stock.')->group(function () {
+            Route::get('/', [ReportController::class, 'stock'])->name('index');
+            Route::get('/list', [ReportController::class, 'stockList'])->name('list');
+            Route::get('/export', [ReportController::class, 'stockExport'])->name('export');
+        });
+        Route::prefix('item-transaction')->name('item-transaction.')->group(function () {
+            Route::get('/', [ReportController::class, 'itemTransaction'])->name('index');
+            Route::get('/list/{status}', [ReportController::class, 'itemTransactionList'])->name('list');
+            Route::get('/export/{status}', [ReportController::class, 'itemTransactionExport'])->name('export');
+        });
     });
 
     Route::prefix('user')->middleware('can:user.active')->name('user.')->group(function () {
