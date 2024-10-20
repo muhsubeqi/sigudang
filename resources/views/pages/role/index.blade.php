@@ -23,7 +23,7 @@
             @can('role.create')
             <button type="button" class="btn btn-sm btn-alt-primary" data-bs-toggle="modal"
                 data-bs-target="#form-modal">
-                <i class="si si-plus me-1"></i> Tambah
+                <i class="si si-plus me-1"></i> Entri Data
             </button>
             @endcan
             <div class="block-options">

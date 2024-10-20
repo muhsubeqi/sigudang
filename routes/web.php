@@ -49,7 +49,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::prefix('item-transaction')->middleware('can:item-transaction.active')->name('item-transaction.')->group(function () {
-        Route::get('/', [ItemTransactionController::class, 'index'])->name('index');
+        Route::get('/', [ItemTransactionController::class, 'index'])->name('index')->middleware('check.status');
         Route::get('/list/{status}', [ItemTransactionController::class, 'list'])->name('list');
         Route::post('/store/{status}', [ItemTransactionController::class, 'store'])->name('store');
         Route::post('/update/{itemTransaction}/{status}', [ItemTransactionController::class, 'update'])->name('update');
@@ -63,7 +63,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/export', [ReportController::class, 'stockExport'])->name('export');
         });
         Route::prefix('item-transaction')->name('item-transaction.')->group(function () {
-            Route::get('/', [ReportController::class, 'itemTransaction'])->name('index');
+            Route::get('/', [ReportController::class, 'itemTransaction'])->name('index')->middleware('check.status');
             Route::get('/list/{status}', [ReportController::class, 'itemTransactionList'])->name('list');
             Route::get('/export/{status}', [ReportController::class, 'itemTransactionExport'])->name('export');
         });

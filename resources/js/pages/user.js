@@ -32,7 +32,7 @@ $(formModal).on('show.bs.modal', function (event) {
     
     // Set modal title and form values (if it's edit)
     if (id) {
-        $(this).find('.block-title').text('Edit');
+        $(this).find('.block-title').text('Edit Data');
         $(this).find('#id').val(id);
         $(this).find('#name').val(name);
         $(this).find('#email').val(email);
@@ -43,7 +43,7 @@ $(formModal).on('show.bs.modal', function (event) {
             $(this).find('#status').prop('checked', false);
         }
     }else{
-        $(this).find('.block-title').text('Tambah');
+        $(this).find('.block-title').text('Entri Data');
         $(this).find('#id').val('');
         $(this).find('#name').val('');
         $(this).find('#email').val('');

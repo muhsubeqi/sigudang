@@ -1,4 +1,4 @@
-@extends('layouts.simple')
+{{-- @extends('layouts.simple')
 
 @section('content')
 <!-- Page Content -->
@@ -149,4 +149,4 @@
     <!-- END Terms Modal -->
 </div>
 <!-- END Page Content -->
-@endsection
+@endsection --}}

@@ -1,18 +1,8 @@
 @extends('layouts.backend')
-
-@section('css')
-<!-- Page JS Plugins CSS -->
-<link rel="stylesheet" href="{{ asset('js/plugins/select2/css/select2.min.css') }}">
-<link rel="stylesheet" href="{{ asset('js/plugins/sweetalert2/sweetalert2.min.css') }}">
-@endsection
-
 @section('js')
-
 <!-- Page JS Plugins -->
 <script src="{{ asset('js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('js/plugins/jquery-validation/additional-methods.js') }}"></script>
-<script src="{{ asset('js/plugins/select2/js/select2.full.min.js') }}"></script>
-<script src="{{ asset('js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 <!-- Page JS Code -->
 <script>
     const COLUMNS = @json($columns);

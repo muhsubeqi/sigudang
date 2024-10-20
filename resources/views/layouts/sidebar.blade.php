@@ -4,9 +4,10 @@
         <!-- Logo -->
         <a class="font-semibold text-dual" href="/">
             <span class="smini-visible">
-                <i class="fa fa-circle-notch text-primary"></i>
+                <i class="fa fa-g text-primary fw-bold"></i>
             </span>
-            <span class="smini-hide fs-5 tracking-wider">SIP<span class="fw-normal">BAGU</span></span>
+            <span class="smini-hide fs-5 tracking-wider"> SI<span class="fw-normal"><i
+                        class="fa fa-g text-primary fw-bold"></i>UDANG</span></span>
         </a>
         <!-- END Logo -->
 

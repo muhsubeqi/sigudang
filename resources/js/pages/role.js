@@ -23,11 +23,11 @@ $(formModal).on('show.bs.modal', function (event) {
     let name = button.data('name')
     // Set modal title and form values (if it's edit)
     if (id) {
-        $(this).find('.block-title').text('Edit');
+        $(this).find('.block-title').text('Edit Data');
         $(this).find('#id').val(id);
         $(this).find('#name').val(name);
     }else{
-        $(this).find('.block-title').text('Tambah');
+        $(this).find('.block-title').text('Entri Data');
         $(this).find('#id').val('');
         $(this).find('#name').val('');
     }

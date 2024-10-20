@@ -6,7 +6,6 @@ $status = request()->query('status');
 @section('css')
 <!-- Page JS Plugins CSS -->
 <link rel="stylesheet" href="{{ asset('js/plugins/select2/css/select2.min.css') }}">
-<link rel="stylesheet" href="{{ asset('js/plugins/sweetalert2/sweetalert2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('js/plugins/flatpickr/flatpickr.min.css') }}">
 @endsection
 
@@ -16,7 +15,6 @@ $status = request()->query('status');
 <script src="{{ asset('js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('js/plugins/jquery-validation/additional-methods.js') }}"></script>
 <script src="{{ asset('js/plugins/select2/js/select2.full.min.js') }}"></script>
-<script src="{{ asset('js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 <script src="{{ asset('js/plugins/flatpickr/flatpickr.min.js') }}"></script>
 <!-- Page JS Code -->
 <script>
@@ -38,7 +36,7 @@ $status = request()->query('status');
             @can('item-transaction.create')
             <button type="button" class="btn btn-sm btn-alt-primary" data-bs-toggle="modal"
                 data-bs-target="#form-modal">
-                <i class="si si-plus me-1"></i> Tambah
+                <i class="si si-plus me-1"></i> Entri Data
             </button>
             @endcan
             <div class="block-options">

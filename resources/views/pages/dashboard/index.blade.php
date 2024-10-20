@@ -14,7 +14,7 @@
             </h1>
             <h2 class="h6 fw-medium fw-medium text-muted mb-0">
                 Selamat Datang <a class="fw-semibold" href="be_pages_generic_profile.html">{{ Auth::user()->name }}</a>,
-                di Sistem Informasi Pengadaan Barang Gudang
+                di Sistem Informasi Persediaan Barang Gudang
             </h2>
         </div>
     </div>

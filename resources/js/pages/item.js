@@ -37,7 +37,7 @@ $(formModal).on('show.bs.modal', function (event) {
 
     const format = $('#item-table').DataTable().ajax.json().codeFormat
 
-    $(this).find('.block-title').text( id ? 'Edit' : 'Tambah' )
+    $(this).find('.block-title').text( id ? 'Edit Data' : 'Entri Data' )
     $(this).find('#id').val(id ?? '')
     $(this).find('#code').val(code ?? format)
     $(this).find('#name').val(name ?? '')

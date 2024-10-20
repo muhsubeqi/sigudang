@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-  <title>OneUI - Bootstrap 5 Admin Template &amp; UI Framework</title>
+  <title>SIGUDANG - Sistem Informasi Persediaan Barang Gudang</title>
 
-  <meta name="description" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave">
-  <meta name="author" content="pixelcave">
+  <meta name="description" content="SIGUDANG - Sistem Informasi Persediaan Barang Gudang created by muhsubeqi">
+  <meta name="author" content="muhsubeqi">
   <meta name="robots" content="index, follow">
 
   <!-- Icons -->
@@ -19,9 +19,6 @@
   <!-- Modules -->
   @yield('css')
   @vite(['resources/sass/main.scss', 'resources/js/oneui/app.js'])
-
-  <!-- Alternatively, you can also include a specific color theme after the main stylesheet to alter the default color theme of the template -->
-  {{-- @vite(['resources/sass/main.scss', 'resources/sass/oneui/themes/amethyst.scss', 'resources/js/oneui/app.js']) --}}
   @yield('js')
 </head>
 

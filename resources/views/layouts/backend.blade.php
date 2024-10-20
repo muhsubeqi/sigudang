@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-  <title>SIPBAGU - Sistem Informasi Pengadaan Barang Gudang</title>
+  <title>SIGUDANG - Sistem Informasi Persediaan Barang Gudang</title>
 
-  <meta name="description" content="SIPBAGU - Sistem Informasi Pengadaan Barang Gudang">
+  <meta name="description" content="SIGUDANG - Sistem Informasi Persediaan Barang Gudang">
   <meta name="author" content="muhsubeqi">
   <meta name="robots" content="index, follow">
   <meta name="base-url" content="{{ url('/') }}">

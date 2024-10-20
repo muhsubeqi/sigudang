@@ -18,7 +18,7 @@
           </div>
           <div class="block-content">
             <div class="p-sm-3 px-lg-4 px-xxl-5 py-lg-5">
-              <h1 class="h2 mb-1">SIPBAGU</h1>
+              <h1 class="h2 mb-1">SI<i class="fas fa-g text-primary fw-bold"></i>UDANG</h1>
               <p class="fw-medium text-muted fs-sm">
                 Sistem Informasi Persediaan Barang Gudang
               </p>
@@ -70,7 +70,7 @@
       </div>
     </div>
     <div class="fs-sm text-muted text-center">
-      <strong>SIPBAGU</strong> &copy; <span data-toggle="year-copy"></span>
+      <strong>SIGUDANG</strong> &copy; <span data-toggle="year-copy"></span>
     </div>
   </div>
 </div>

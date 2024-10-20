@@ -28,6 +28,11 @@
                 <label for="image" class="col-sm-3 col-form-label">Foto</label>
                 <div class="col-sm-9">
                     <input type="file" class="form-control" name="image" id="image">
+                    <small class="text-muted" style="font-size: 12px;">
+                        Keterangan : <br>
+                        - Tipe file *.jpg atau *.png. <br>
+                        - Maks 1 Mb.
+                    </small>
                 </div>
             </div>
             <div class="row mb-3">

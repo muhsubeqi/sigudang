@@ -10,11 +10,11 @@
                 <div class="content content-full overflow-hidden">
                     <div class="py-4">
                         <!-- Error Header -->
-                        <h1 class="display-1 fw-bolder text-flat">
-                            403
+                        <h1 class="display-1 fw-bolder text-city">
+                            404
                         </h1>
                         <h2 class="h4 fw-normal text-muted mb-5">
-                            We are sorry but you do not have permission to access this page..
+                            We are sorry but the page you are looking for was not found..
                         </h2>
                         <!-- END Error Header -->
                     </div>
@@ -26,7 +26,8 @@
                     Would you like to let us know about it?
                 </p>
                 <a class="link-fx" href="javascript:void(0)">Report it</a> or <a class="link-fx"
-                    href="{{ route('dashboard.index') }}">Go Back to Dashboard</a>
+                    href="{{ route('dashboard.index') }}">Go
+                    Back to Dashboard</a>
                 <!-- END Error Footer -->
             </div>
         </div>

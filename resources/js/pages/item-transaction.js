@@ -36,7 +36,7 @@ $(formModal).on('show.bs.modal', function (event) {
 
     const format = $('#item-transaction-table').DataTable().ajax.json().codeFormat
   
-    $(this).find('.block-title').text( id ? 'Edit' : 'Tambah' )
+    $(this).find('.block-title').text( id ? 'Edit Data' : 'Entri Data' )
     $(this).find('#id').val(id ?? '')
     $(this).find('#invoice').val(invoice ?? format)
     $(this).find('#item-id').val(item ?? '').change()
@@ -78,7 +78,7 @@ $(formModal).on('show.bs.modal', function (event) {
             text: 'Stok barang tidak mencukupi!',
          }).then(() => {
             $(this).val(stock)
-            $('#stock-total').val(stock)
+            $('#stock-total').val(0)
             return
          })
       }

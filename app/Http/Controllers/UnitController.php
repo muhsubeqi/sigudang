@@ -104,7 +104,7 @@ class UnitController extends Controller
             }
 
             $data = [
-                'status' => 200,
+                'status' => 500,
                 'message' => 'error, telah terjadi kesalahan sistem',
             ];
         }
