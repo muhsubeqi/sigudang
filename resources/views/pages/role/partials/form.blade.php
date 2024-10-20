@@ -1,5 +1,6 @@
 <form id="role-form" method="post" action="" enctype="multipart/form-data">
-    <div class="modal fade" id="form-modal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal fade" id="form-modal" tabindex="-1" aria-labelledby="formModalLabel" data-bs-backdrop="static"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="block block-rounded block-transparent mb-0">
@@ -14,16 +15,15 @@
                     <div class="block-content">
                         <input type="hidden" name="id" id="id">
                         <div class="row mb-3">
-                            <label for="name" class="col-sm-3 col-form-label">Name</label>
+                            <label for="name" class="col-sm-3 col-form-label">Nama</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="name" name="name"
-                                    placeholder="Enter Name">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
                             </div>
                         </div>
                     </div>
                     <div class="block-content block-content-full text-end bg-body">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-alt-danger" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-alt-success">Simpan</button>
                     </div>
                 </div>
             </div>

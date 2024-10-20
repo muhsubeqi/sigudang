@@ -98,12 +98,12 @@ class UserController extends Controller
             $user->assignRole($role->name);
             $data = [
                 'status' => 200,
-                'message' => 'Successfully created user',
+                'message' => 'Berhasil menambahkan data user',
             ];
         } catch (\Throwable $th) {
             $data = [
                 'status' => 500,
-                'message' => $th->getMessage()
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);
@@ -137,13 +137,13 @@ class UserController extends Controller
             $user->syncRoles($role->name);
             $data = [
                 'status' => 200,
-                'message' => 'Successfully updated user',
+                'message' => 'Berhasil mengupdate data user',
                 'data' => $user
             ];
         } catch (\Throwable $th) {
             $data = [
                 'status' => 500,
-                'message' => $th->getMessage()
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);
@@ -163,12 +163,12 @@ class UserController extends Controller
             $user->delete();
             $data = [
                 'status' => 200,
-                'message' => 'success',
+                'message' => 'Berhasil menghapus data user',
             ];
         } catch (\Throwable $th) {
             $data = [
-                'status' => 200,
-                'message' => 'error',
+                'status' => 500,
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);

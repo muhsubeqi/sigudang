@@ -55,9 +55,16 @@ $(document).ready(function () {
                 required: true,
                 minlength: 3
             },
-            role: {
+            type_id: {
                 required: true
             },
+            unit_id: {
+                required: true
+            },
+            stock: {
+                required: true,
+                number: true
+            }
         },
         highlightElement: function(element) {
             $(element).addClass('is-invalid');

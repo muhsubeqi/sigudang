@@ -53,7 +53,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 80px;">#</th>
-                                <th>Nama Satuan</th>
+                                <th class="text-start">Nama Satuan</th>
                                 @if (Gate::allows('unit.edit') || Gate::allows('unit.delete'))
                                 <th>Aksi</th>
                                 @endif

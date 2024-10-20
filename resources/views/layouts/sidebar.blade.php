@@ -20,43 +20,6 @@
             </a>
             <!-- END Dark Mode -->
 
-            <!-- Options -->
-            <div class="dropdown d-inline-block ms-1">
-                <a class="btn btn-sm btn-alt-secondary" id="sidebar-themes-dropdown" data-bs-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" href="#">
-                    <i class="fa fa-brush"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-end fs-sm smini-hide border-0"
-                    aria-labelledby="sidebar-themes-dropdown">
-                    <!-- Sidebar Styles -->
-                    <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                    <a class="dropdown-item fw-medium" data-toggle="layout" data-action="sidebar_style_light"
-                        href="javascript:void(0)">
-                        <span>Sidebar Light</span>
-                    </a>
-                    <a class="dropdown-item fw-medium" data-toggle="layout" data-action="sidebar_style_dark"
-                        href="javascript:void(0)">
-                        <span>Sidebar Dark</span>
-                    </a>
-                    <!-- END Sidebar Styles -->
-
-                    <div class="dropdown-divider"></div>
-
-                    <!-- Header Styles -->
-                    <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                    <a class="dropdown-item fw-medium" data-toggle="layout" data-action="header_style_light"
-                        href="javascript:void(0)">
-                        <span>Header Light</span>
-                    </a>
-                    <a class="dropdown-item fw-medium" data-toggle="layout" data-action="header_style_dark"
-                        href="javascript:void(0)">
-                        <span>Header Dark</span>
-                    </a>
-                    <!-- END Header Styles -->
-                </div>
-            </div>
-            <!-- END Options -->
-
             <!-- Close Sidebar, Visible only on mobile screens -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
             <a class="d-lg-none btn btn-sm btn-alt-secondary ms-1" data-toggle="layout" data-action="sidebar_close"
@@ -77,7 +40,7 @@
                 <li class="nav-main-item">
                     <a class="nav-main-link {{ request()->routeIs('dashboard.*') ? ' active' : '' }}"
                         href="{{ route('dashboard.index') }}">
-                        <i class="nav-main-link-icon si si-cursor"></i>
+                        <i class="nav-main-link-icon fas fa-tachometer-alt"></i>
                         <span class="nav-main-link-name">Dashboard</span>
                     </a>
                 </li>
@@ -85,7 +48,7 @@
                 <li class="nav-main-item {{ request()->routeIs('item.*', 'type.*', 'unit.*') ? ' open' : '' }}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                         aria-expanded="true" href="#">
-                        <i class="nav-main-link-icon si si-bulb"></i>
+                        <i class="nav-main-link-icon fas fa-laptop"></i>
                         <span class="nav-main-link-name">Barang</span>
                     </a>
                     <ul class="nav-main-submenu">
@@ -112,13 +75,13 @@
                 <li class="nav-main-heading">Transaksi</li>
                 <li class="nav-main-item">
                     <a class="nav-main-link" href="{{ route('item-transaction.index', ['status' => 'in']) }}">
-                        <i class="nav-main-link-icon si si-cursor"></i>
+                        <i class="nav-main-link-icon fas fa-folder-closed"></i>
                         <span class="nav-main-link-name">Barang Masuk</span>
                     </a>
                 </li>
                 <li class="nav-main-item">
                     <a class="nav-main-link" href="{{ route('item-transaction.index', ['status' => 'out']) }}">
-                        <i class="nav-main-link-icon si si-cursor"></i>
+                        <i class="nav-main-link-icon fas fa-folder-open"></i>
                         <span class="nav-main-link-name">Barang Keluar</span>
                     </a>
                 </li>
@@ -126,34 +89,34 @@
                 <li class="nav-main-item">
                     <a class="nav-main-link {{ request()->routeIs('report.stock.index') ? ' active' : '' }}"
                         href="{{ route('report.stock.index') }}">
-                        <i class="nav-main-link-icon si si-cursor"></i>
+                        <i class="nav-main-link-icon fas fa-file-excel"></i>
                         <span class="nav-main-link-name">Laporan Stok</span>
                     </a>
                 </li>
                 <li class="nav-main-item">
                     <a class="nav-main-link" href="{{ route('report.item-transaction.index', ['status' => 'in']) }}">
-                        <i class="nav-main-link-icon si si-cursor"></i>
+                        <i class="nav-main-link-icon fas fa-file-download"></i>
                         <span class="nav-main-link-name">Laporan Barang Masuk</span>
                     </a>
                 </li>
                 <li class="nav-main-item">
                     <a class="nav-main-link" href="{{ route('report.item-transaction.index', ['status' => 'out']) }}">
-                        <i class="nav-main-link-icon si si-cursor"></i>
-                        <span class="nav-main-link-name">Laporan Barang Masuk</span>
+                        <i class="nav-main-link-icon fas fa-file-upload"></i>
+                        <span class="nav-main-link-name">Laporan Barang Keluar</span>
                     </a>
                 </li>
                 <li class="nav-main-heading">Pengaturan</li>
                 <li class="nav-main-item">
                     <a class="nav-main-link{{ request()->routeIs('user.*') ? ' active' : '' }}"
                         href="{{ route('user.index') }}">
-                        <i class="nav-main-link-icon si si-bulb"></i>
+                        <i class="nav-main-link-icon fas fa-users"></i>
                         <span class="nav-main-link-name">Pengguna</span>
                     </a>
                 </li>
                 <li class="nav-main-item {{ request()->routeIs('permission.*', 'role.*') ? ' open' : '' }}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                         aria-expanded="true" href="#">
-                        <i class="nav-main-link-icon si si-bulb"></i>
+                        <i class="nav-main-link-icon fas fa-lock"></i>
                         <span class="nav-main-link-name">Role Permission</span>
                     </a>
                     <ul class="nav-main-submenu">

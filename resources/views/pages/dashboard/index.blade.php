@@ -206,7 +206,7 @@
                 <table class="table table-hover table-vcenter">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th class="text-center">No</th>
                             <th>ID Barang</th>
                             <th>Nama Barang</th>
                             <th>Jenis Barang</th>
@@ -217,7 +217,7 @@
                     <tbody class="fs-sm">
                         @foreach ($minimumStock as $row)
                         <tr>
-                            <td>
+                            <td class="text-center">
                                 {{ $loop->iteration }}
                             </td>
                             <td>

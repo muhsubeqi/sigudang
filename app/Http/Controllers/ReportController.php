@@ -85,19 +85,23 @@ class ReportController extends Controller
         return DataTables::eloquent($data)
             ->addIndexColumn()
             ->editColumn('item', function (ItemTransaction $itemTransaction) {
-                return $itemTransaction->item->name;
+                return $itemTransaction->item->code . ' - ' . $itemTransaction->item->name;
             })
             ->addColumn('unit', function (ItemTransaction $itemTransaction) {
                 return $itemTransaction->item->unit->name;
+            })
+            ->editColumn('date', function (ItemTransaction $itemTransaction) {
+                return Carbon::parse($itemTransaction->date)->format('d-m-Y');
             })
             ->toJson();
     }
 
     public function itemTransactionExport(Request $request, $status)
     {
+        $statusName = $status == 'in' ? 'Masuk' : 'Keluar';
         $startDate = Carbon::parse($request->start_date)->format('Y-m-d');
         $endDate = Carbon::parse($request->end_date)->format('Y-m-d');
 
-        return Excel::download(new ItemTransactionExport($status, $startDate, $endDate), 'Laporan Barang Masuk - ' . $status . ' - ' . $startDate . ' - ' . $endDate . '.xlsx');
+        return Excel::download(new ItemTransactionExport($status, $startDate, $endDate), 'Laporan Data Barang ' . $statusName . '  ' . $startDate . ' sd ' . $endDate . '.xlsx');
     }
 }

@@ -91,12 +91,12 @@ class ItemController extends Controller
             $item = Item::create($dataValidated);
             $data = [
                 'status' => 200,
-                'message' => 'Successfully created item',
+                'message' => 'Barang berhasil di tambahkan',
             ];
         } catch (\Throwable $th) {
             $data = [
                 'status' => 500,
-                'message' => $th->getMessage()
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);
@@ -123,13 +123,13 @@ class ItemController extends Controller
             $item->update($dataValidated);
             $data = [
                 'status' => 200,
-                'message' => 'Successfully updated item',
+                'message' => 'Barang berhasil di update',
                 'data' => $item
             ];
         } catch (\Throwable $th) {
             $data = [
                 'status' => 500,
-                'message' => $th->getMessage()
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);
@@ -141,7 +141,6 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         try {
-
             if ($item->image) {
                 $path = 'public/images/item/';
                 FileStorage::delete($item->image, $path);
@@ -149,12 +148,19 @@ class ItemController extends Controller
             $item->delete();
             $data = [
                 'status' => 200,
-                'message' => 'success',
+                'message' => 'Berhasil menghapus data barang',
             ];
         } catch (\Throwable $th) {
+            if ($th->getCode() == 23000) {
+                $data = [
+                    'status' => 500,
+                    'message' => 'Data barang tidak bisa dihapus karena sudah tercatat pada Data Transaksi',
+                ];
+                return response()->json($data);
+            }
             $data = [
-                'status' => 200,
-                'message' => 'error',
+                'status' => 500,
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);

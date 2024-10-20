@@ -14,17 +14,13 @@
               <a class="btn-block-option fs-sm" href="{{ route('password.request') }}">Forgot
                 Password?</a>
               @endif
-              <a class="btn-block-option" href="{{ route('register') }}" data-bs-toggle="tooltip"
-                data-bs-placement="left" title="New Account">
-                <i class="fa fa-user-plus"></i>
-              </a>
             </div>
           </div>
           <div class="block-content">
             <div class="p-sm-3 px-lg-4 px-xxl-5 py-lg-5">
-              <h1 class="h2 mb-1">OneUI</h1>
-              <p class="fw-medium text-muted">
-                Welcome, please login.
+              <h1 class="h2 mb-1">SIPBAGU</h1>
+              <p class="fw-medium text-muted fs-sm">
+                Sistem Informasi Persediaan Barang Gudang
               </p>
 
               <!-- Sign In Form -->
@@ -74,7 +70,7 @@
       </div>
     </div>
     <div class="fs-sm text-muted text-center">
-      <strong>OneUI 5.5</strong> &copy; <span data-toggle="year-copy"></span>
+      <strong>SIPBAGU</strong> &copy; <span data-toggle="year-copy"></span>
     </div>
   </div>
 </div>

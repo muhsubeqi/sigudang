@@ -1,4 +1,5 @@
 import sweetAlert from "../helper/sweetalert"
+One.helpers(["js-flatpickr", "jq-validation"])
 
 let itemTransactionForm = $('#item-transaction-form')
 let formModal = $('#form-modal')
@@ -34,7 +35,7 @@ $(formModal).on('show.bs.modal', function (event) {
     let date = button.data('date')
 
     const format = $('#item-transaction-table').DataTable().ajax.json().codeFormat
-
+  
     $(this).find('.block-title').text( id ? 'Edit' : 'Tambah' )
     $(this).find('#id').val(id ?? '')
     $(this).find('#invoice').val(invoice ?? format)
@@ -42,6 +43,11 @@ $(formModal).on('show.bs.modal', function (event) {
     $(this).find('#qty').val(qty ?? '')
     $(this).find('#stock').val(stock ?? '')
     $(this).find('#date').val(date ?? '')
+    if (urlStatus == 'in') {
+        $(this).find('#stock-total').val(stock + qty ?? '')
+    }else{
+        $(this).find('#stock-total').val(stock - qty ?? '')
+    }
 
     $('#item-id').on('change', function () {
       let item = $(this).val()
@@ -63,12 +69,25 @@ $(formModal).on('show.bs.modal', function (event) {
       }else{
         stockTotal = parseInt(stock) - parseInt(qty)
       }
+
+      // Check if quantity exceeds stock
+      if (urlStatus == 'out' && qty > stock) {
+         Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Stok barang tidak mencukupi!',
+         }).then(() => {
+            $(this).val(stock)
+            $('#stock-total').val(stock)
+            return
+         })
+      }
+
       $('#stock-total').val(stockTotal)
     })
 });
 
 $(document).ready(function () {
-    One.helpers("jq-validation")
     $(itemTransactionForm).validate({
         rules: {
             invoice: {
@@ -99,7 +118,6 @@ $(formModal).on('hidden.bs.modal', function () {
 
 $(itemTransactionForm).on('submit', function (e) {
     e.preventDefault()
-    console.log('asd');
 
     if (!$(this).valid()) {
         return

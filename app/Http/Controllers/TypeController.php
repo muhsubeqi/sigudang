@@ -68,12 +68,12 @@ class TypeController extends Controller
             $type = Type::create($dataValidated);
             $data = [
                 'status' => 200,
-                'message' => 'Success create type',
+                'message' => 'Berhasil menambahkan data jenis barang',
             ];
         } catch (\Throwable $th) {
             $data = [
                 'status' => 500,
-                'message' => $th->getMessage()
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);
@@ -100,13 +100,13 @@ class TypeController extends Controller
             $type->update($dataValidated);
             $data = [
                 'status' => 200,
-                'message' => 'Success update type',
+                'message' => 'Berhasil mengupdate data jenis barang',
                 'data' => $type
             ];
         } catch (\Throwable $th) {
             $data = [
                 'status' => 500,
-                'message' => $th->getMessage()
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);
@@ -124,12 +124,20 @@ class TypeController extends Controller
             $type->delete();
             $data = [
                 'status' => 200,
-                'message' => 'Success delete type',
+                'message' => 'Berhasil menghapus data jenis barang',
             ];
         } catch (\Throwable $th) {
+            if ($th->getCode() == 23000) {
+                $data = [
+                    'status' => 500,
+                    'message' => 'Data jenis barang tidak bisa dihapus karena sudah tercatat pada Data Barang.',
+                ];
+                return response()->json($data);
+            }
+
             $data = [
-                'status' => 200,
-                'message' => 'error',
+                'status' => 500,
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);

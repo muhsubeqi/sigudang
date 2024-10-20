@@ -24,7 +24,7 @@ class RoleController extends Controller
         ];
 
         if (Gate::allows('role.edit') || Gate::allows('role.delete')) {
-            $columns[] = ["data" => 'action', "name" => 'action', "class" => 'text-center', "sortable" => false, "searchable" => false];
+            $columns[] = ["data" => 'action', "name" => 'action', "sortable" => false, "searchable" => false];
         }
 
         $permission_groups = User::getpermissionGroups();
@@ -63,12 +63,12 @@ class RoleController extends Controller
             Role::create($dataValidated);
             $data = [
                 'status' => 200,
-                'message' => 'success',
+                'message' => 'Berhasil menambahkan data role',
             ];
         } catch (\Throwable $th) {
             $data = [
                 'status' => 500,
-                'message' => $th->getMessage()
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);
@@ -93,13 +93,13 @@ class RoleController extends Controller
             $role->update($dataValidated);
             $data = [
                 'status' => 200,
-                'message' => 'success',
+                'message' => 'Berhasil mengupdate data role',
                 'data' => $role
             ];
         } catch (\Throwable $th) {
             $data = [
                 'status' => 500,
-                'message' => $th->getMessage()
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);
@@ -114,12 +114,12 @@ class RoleController extends Controller
             $role->delete();
             $data = [
                 'status' => 200,
-                'message' => 'success',
+                'message' => 'Berhasil menghapus data role',
             ];
         } catch (\Throwable $th) {
             $data = [
-                'status' => 200,
-                'message' => 'error',
+                'status' => 500,
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);
@@ -142,13 +142,13 @@ class RoleController extends Controller
             }
             return [
                 'status' => 200,
-                'message' => 'success',
+                'message' => 'Berhasil mengupdate permission role',
             ];
         } catch (\Throwable $th) {
             return [
                 'status' => 500,
                 'message' => 'error',
-                'data' => $th->getMessage()
+                'data' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
 

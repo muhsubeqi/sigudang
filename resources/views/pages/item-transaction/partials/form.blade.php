@@ -1,5 +1,6 @@
 <form id="item-transaction-form" method="post" action="" enctype="multipart/form-data">
-    <div class="modal fade" id="form-modal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal fade" id="form-modal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true"
+        data-bs-backdrop="static">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="block block-rounded block-transparent mb-0">
@@ -23,8 +24,8 @@
                         <div class="row mb-3">
                             <label for="date" class="col-sm-3 col-form-label">Tanggal</label>
                             <div class="col-sm-9">
-                                <input type="date" class="form-control" id="date" name="date"
-                                    placeholder="Masukkan Tanggal">
+                                <input type="text" class="form-control js-flatpickr" id="date" name="date"
+                                    placeholder="d-m-Y" data-date-format="d-m-Y">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -33,7 +34,7 @@
                                 <select class="form-select js-select2" name="item_id" id="item-id" style="width:100%">
                                     <option></option>
                                     @foreach ($items as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    <option value="{{ $item->id }}">{{ $item->code }} - {{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

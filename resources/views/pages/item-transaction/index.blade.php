@@ -7,6 +7,7 @@ $status = request()->query('status');
 <!-- Page JS Plugins CSS -->
 <link rel="stylesheet" href="{{ asset('js/plugins/select2/css/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('js/plugins/sweetalert2/sweetalert2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('js/plugins/flatpickr/flatpickr.min.css') }}">
 @endsection
 
 @section('js')
@@ -16,6 +17,7 @@ $status = request()->query('status');
 <script src="{{ asset('js/plugins/jquery-validation/additional-methods.js') }}"></script>
 <script src="{{ asset('js/plugins/select2/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('js/plugins/flatpickr/flatpickr.min.js') }}"></script>
 <!-- Page JS Code -->
 <script>
     const COLUMNS = @json($columns);
@@ -26,6 +28,7 @@ $status = request()->query('status');
 @section('content')
 <x-hero-section title="{{ $status === 'in' ? 'Barang Masuk' : 'Barang Keluar' }}" :breadcrumbs="[
     ['label' => 'Transaksi', 'url' => 'javascript:void(0)'],
+    ['label' => $status === 'in' ? 'Barang Masuk' : 'Barang Keluar'],
 ]" />
 <!-- Page Content -->
 <div class="content">
@@ -53,11 +56,11 @@ $status = request()->query('status');
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 80px;">#</th>
-                        <th>ID Transaksi</th>
-                        <th>Barang</th>
-                        <th>Jumlah</th>
-                        <th>Tanggal</th>
-                        <th>Dibuat Oleh</th>
+                        <th class="text-start">ID Transaksi</th>
+                        <th class="text-start">Barang</th>
+                        <th class="text-start">Jumlah</th>
+                        <th class="text-start">Tanggal</th>
+                        <th class="text-start">Dibuat Oleh</th>
                         @if (Gate::allows('item-transaction.edit') || Gate::allows('item-transaction.delete'))
                         <th style="width: 10%;">Aksi</th>
                         @endif

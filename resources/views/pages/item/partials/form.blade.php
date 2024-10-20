@@ -1,5 +1,6 @@
 <form id="item-form" method="post" action="" enctype="multipart/form-data">
-    <div class="modal fade" id="form-modal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal fade" id="form-modal" tabindex="-1" aria-labelledby="formModalLabel" data-bs-backdrop="static"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="block block-rounded block-transparent mb-0">

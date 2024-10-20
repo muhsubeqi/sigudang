@@ -51,12 +51,12 @@ class UnitController extends Controller
             $unit = Unit::create($dataValidated);
             $data = [
                 'status' => 200,
-                'message' => 'Success create unit',
+                'message' => 'Berhasil menambahkan data satuan',
             ];
         } catch (\Throwable $th) {
             $data = [
                 'status' => 500,
-                'message' => $th->getMessage()
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);
@@ -73,13 +73,13 @@ class UnitController extends Controller
             $unit->update($dataValidated);
             $data = [
                 'status' => 200,
-                'message' => 'Success update unit',
+                'message' => 'Berhasil mengupdate data satuan',
                 'data' => $unit
             ];
         } catch (\Throwable $th) {
             $data = [
                 'status' => 500,
-                'message' => $th->getMessage()
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);
@@ -92,12 +92,20 @@ class UnitController extends Controller
             $unit->delete();
             $data = [
                 'status' => 200,
-                'message' => 'Success delete unit',
+                'message' => 'Berhasil menghapus data satuan',
             ];
         } catch (\Throwable $th) {
+            if ($th->getCode() == 23000) {
+                $data = [
+                    'status' => 500,
+                    'message' => 'Data satuan tidak bisa dihapus karena sudah tercatat pada Data Barang.',
+                ];
+                return response()->json($data);
+            }
+
             $data = [
                 'status' => 200,
-                'message' => 'error',
+                'message' => 'error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);

@@ -13,8 +13,8 @@ return new class extends Migration {
         Schema::create('item_transactions', function (Blueprint $table) {
             $table->id();
             $table->string('invoice');
-            $table->foreignId('item_id')->references('id')->on('items')->onDelete('cascade');
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('item_id')->references('id')->on('items')->nullable()->constrained();
+            $table->foreignId('user_id')->references('id')->on('users')->nullable()->constrained();
             $table->integer('qty');
             $table->enum('status', ['in', 'out']);
             $table->dateTime('date');

@@ -7,21 +7,21 @@
                     {{ $title }}
                 </h1>
                 @if($subtitle)
-                    <small class="fw-medium text-muted mb-0 mt-0">
-                        {{ $subtitle }}
-                    </small>
+                <small class="fw-medium text-muted mb-0 mt-0">
+                    {{ $subtitle }}
+                </small>
                 @endif
             </div>
             <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-alt">
                     @foreach ($breadcrumbs as $breadcrumb)
-                        <li class="breadcrumb-item">
-                            @if (isset($breadcrumb['url']))
-                                <a class="link-fx" href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['label'] }}</a>
-                            @else
-                                {{ $breadcrumb['label'] }}
-                            @endif
-                        </li>
+                    <li class="breadcrumb-item">
+                        @if (isset($breadcrumb['url']))
+                        <a class="link-fx" href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['label'] }}</a>
+                        @else
+                        {{ $breadcrumb['label'] }}
+                        @endif
+                    </li>
                     @endforeach
                 </ol>
             </nav>

@@ -1,4 +1,4 @@
-One.helpers("js-flatpickr")
+One.helpers(["js-flatpickr", "jq-validation"])
 
 const formFilter = $('#form-filter')
 const btnRefresh = $('#btn-refresh')
@@ -11,8 +11,30 @@ let endDate = null
 
 $('#filter-status-name').text(`Filter ${statusName}`)
 
+$(formFilter).validate({
+    rules: {
+        start_date: {
+            required: true,
+        },
+        end_date: {
+            required: true,
+        },
+    },
+    highlightElement: function(element) {
+        $(element).addClass('is-invalid');
+    },
+    unhighlightElement: function(element) {
+        $(element).removeClass('is-invalid');
+    }
+})
+
 formFilter.on('submit', function (e) {
     e.preventDefault()
+
+    if (!$(this).valid()) {
+        return
+    }
+
     startDate = $('#start-date').val()
     endDate = $('#end-date').val()
 

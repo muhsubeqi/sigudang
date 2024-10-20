@@ -27,19 +27,6 @@
 ]" />
 <!-- Page Content -->
 <div class="content">
-    <!-- Info -->
-    <div class="block block-rounded">
-        <div class="block-header block-header-default">
-            <h3 class="block-title">Plugin Example</h3>
-        </div>
-        <div class="block-content fs-sm text-muted">
-            <p>
-                This page showcases how easily you can add a plugin’s JS/CSS assets and init it using custom JS code.
-            </p>
-        </div>
-    </div>
-    <!-- END Info -->
-
     <!-- Dynamic Table Full -->
     <div class="block block-rounded" id="block-item">
         <div class="block-header block-header-default">
@@ -64,12 +51,12 @@
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 80px;">#</th>
-                        <th>ID Barang</th>
-                        <th>Nama Barang</th>
-                        <th>Satuan</th>
-                        <th>Jenis</th>
-                        <th>Stok</th>
-                        <th class="text-start" class="d-none d-sm-table-cell">Foto</th>
+                        <th class="text-start">ID Barang</th>
+                        <th class="text-start">Nama Barang</th>
+                        <th class="text-start">Satuan</th>
+                        <th class="text-start">Jenis</th>
+                        <th class="text-start">Stok</th>
+                        <th class="text-start">Foto</th>
                         @if (Gate::allows('item.edit') || Gate::allows('item.delete'))
                         <th style="width: 10%;">Aksi</th>
                         @endif

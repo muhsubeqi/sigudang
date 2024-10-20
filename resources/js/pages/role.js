@@ -27,7 +27,7 @@ $(formModal).on('show.bs.modal', function (event) {
         $(this).find('#id').val(id);
         $(this).find('#name').val(name);
     }else{
-        $(this).find('.block-title').text('Create');
+        $(this).find('.block-title').text('Tambah');
         $(this).find('#id').val('');
         $(this).find('#name').val('');
     }

@@ -1,12 +1,31 @@
-One.helpers("jq-select2")
+One.helpers(["jq-select2", "jq-validation"])
 
 const formFilter = $('#form-filter')
 const btnRefresh = $('#btn-refresh')
 const btnExport = $('#btn-export')
 let stock = null
 
+$(formFilter).validate({
+    rules: {
+        stock: {
+            required: true,
+        },
+    },
+    highlightElement: function(element) {
+        $(element).addClass('is-invalid');
+    },
+    unhighlightElement: function(element) {
+        $(element).removeClass('is-invalid');
+    }
+})
+
 formFilter.on('submit', function (e) {
     e.preventDefault()
+
+    if (!$(this).valid()) {
+        return
+    }
+    
     stock = $('#stock').val()
     btnExport.removeClass('d-none')
     One.block('state_loading', '#block-report-stock')

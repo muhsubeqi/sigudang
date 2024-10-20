@@ -20,7 +20,8 @@
             <div class="row mb-3">
                 <label for="status" class="col-sm-3 col-form-label">Ket.</label>
                 <div class="col-sm-9">
-                    <textarea class="form-control" name="description" id="description"></textarea>
+                    <textarea class="form-control" name="description" id="description"
+                        placeholder="Masukkan Keterangan"></textarea>
                 </div>
             </div>
             <div class="row mb-3">

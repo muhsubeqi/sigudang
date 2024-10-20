@@ -9,6 +9,8 @@
 @section('js')
 
 <!-- Page JS Plugins -->
+<script src="{{ asset('js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('js/plugins/jquery-validation/additional-methods.js') }}"></script>
 <script src="{{ asset('js/plugins/select2/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 <!-- Page JS Code -->
@@ -36,7 +38,7 @@
                     <div class="col-md-6">
                         <label class="form-label" for="stock">Stok Barang <span class="text-danger">*</span></label>
                         <select class="form-select js-select2" id="stock" name="stock" style="width:100%"
-                            data-placeholder="Choose one.." required>
+                            data-placeholder="Choose one..">
                             <option></option>
                             <option value="all">Seluruh</option>
                             <option value="minimum">Minimum</option>

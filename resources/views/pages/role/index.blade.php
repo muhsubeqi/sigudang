@@ -12,23 +12,21 @@
 @vite(['resources/js/pages/role.js'])
 @endsection
 @section('content')
-<x-hero-section title="Role" subtitle="List of all roles" :breadcrumbs="[
-        ['label' => 'Dashboard', 'url' => 'javascript:void(0)'],
+<x-hero-section title="Role" subtitle="Daftar semua role sistem" :breadcrumbs="[
+        ['label' => 'Pengaturan', 'url' => 'javascript:void(0)'],
         ['label' => 'Role'],
     ]" />
 <!-- Page Content -->
 <div class="content">
     <div class="block block-rounded" id="block-role">
         <div class="block-header block-header-default">
-            <h3 class="block-title">
-                Role <small>List</small>
-            </h3>
+            @can('role.create')
+            <button type="button" class="btn btn-sm btn-alt-primary" data-bs-toggle="modal"
+                data-bs-target="#form-modal">
+                <i class="si si-plus me-1"></i> Tambah
+            </button>
+            @endcan
             <div class="block-options">
-                @can('role.create')
-                <button type="button" class="btn-block-option" data-bs-toggle="modal" data-bs-target="#form-modal">
-                    <i class="si si-plus"></i>
-                </button>
-                @endcan
                 <button type="button" class="btn-block-option" data-toggle="block-option" id="btn-refresh">
                     <i class="si si-refresh"></i>
                 </button>
@@ -41,9 +39,9 @@
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 20px;">#</th>
-                        <th>Name</th>
+                        <th>Nama</th>
                         @if (Gate::allows('role.edit') || Gate::allows('role.delete'))
-                        <th style="width: 15%;">Action</th>
+                        <th style="width: 15%;">Aksi</th>
                         @endif
                     </tr>
                 </thead>

@@ -99,10 +99,6 @@
       'sidebar-dark page-header-dark dark-mode'   Enable dark mode (light sidebar/header is not supported with dark mode)
     -->
   <div id="page-container" class="sidebar-o enable-page-overlay sidebar-dark side-scroll page-header-fixed">
-    <!-- Side Overlay-->
-    @include('layouts.side-overlay')
-    <!-- END Side Overlay -->
-
     <!-- Sidebar -->
     <!--
         Sidebar Mini Mode - Display Helper classes

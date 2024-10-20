@@ -16,7 +16,7 @@ class DashboardController extends Controller
         $users = User::count();
 
         $items = Item::query()->with('type', 'unit');
-        $minimumStock = $items->where('stock', '<=', 0)->get();
+        $minimumStock = Item::where('stock', '<=', 0)->get();
 
         return view('pages.dashboard.index', compact('items', 'inItemTransactions', 'outItemTransactions', 'users', 'minimumStock'));
     }

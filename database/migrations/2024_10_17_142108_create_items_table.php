@@ -14,8 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->string('code');
             $table->string('name');
-            $table->foreignId('unit_id')->references('id')->on('units')->onDelete('cascade');
-            $table->foreignId('type_id')->references('id')->on('types')->onDelete('cascade');
+            $table->foreignId('unit_id')->references('id')->on('units')->nullable()->constrained();
+            $table->foreignId('type_id')->references('id')->on('types')->nullable()->constrained();
             $table->integer('stock');
             $table->string('image')->nullable();
             $table->timestamps();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helper\AutoGetCode;
 use App\Models\Item;
 use App\Models\ItemTransaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Yajra\DataTables\Facades\DataTables;
@@ -45,19 +46,22 @@ class ItemTransactionController extends Controller
     {
         $data = ItemTransaction::where('status', $status)->select('*');
 
-        if ($status == 'in'){
-            $codeFormat = AutoGetCode::store($data, 'TM', 'code');
-        }else{
-            $codeFormat = AutoGetCode::store($data, 'TK', 'code');
+        if ($status == 'in') {
+            $codeFormat = AutoGetCode::store($data, 'TM', 'invoice');
+        } else {
+            $codeFormat = AutoGetCode::store($data, 'TK', 'invoice');
         }
 
         return DataTables::eloquent($data)
             ->addIndexColumn()
             ->editColumn('item', function (ItemTransaction $itemTransaction) {
-                return $itemTransaction->item->name;
+                return $itemTransaction->item->code . ' - ' . $itemTransaction->item->name;
             })
             ->editColumn('user', function (ItemTransaction $itemTransaction) {
                 return $itemTransaction->user->name;
+            })
+            ->editColumn('date', function (ItemTransaction $itemTransaction) {
+                return Carbon::parse($itemTransaction->date)->format('d-m-Y');
             })
             ->addColumn('action', function (ItemTransaction $itemTransaction) {
                 return view('pages.item-transaction.partials.action', ['row' => $itemTransaction]);
@@ -77,6 +81,7 @@ class ItemTransactionController extends Controller
             $dataValidated = $request->validate($this->rules);
             $dataValidated['status'] = $status;
             $dataValidated['user_id'] = auth()->user()->id;
+            $dataValidated['date'] = Carbon::parse($dataValidated['date'])->format('Y-m-d');
             $itemTransaction = ItemTransaction::create($dataValidated);
 
             $item = Item::find($dataValidated['item_id']);
@@ -89,7 +94,7 @@ class ItemTransactionController extends Controller
 
             $data = [
                 'status' => 200,
-                'message' => 'Successfully created item transaction',
+                'message' => 'Berhasil menambahkan data barang ' . ($status == 'in' ? 'masuk' : 'keluar'),
             ];
 
             \DB::commit();
@@ -97,7 +102,7 @@ class ItemTransactionController extends Controller
             \DB::rollBack();
             $data = [
                 'status' => 500,
-                'message' => $th->getMessage()
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);
@@ -113,20 +118,20 @@ class ItemTransactionController extends Controller
             $dataValidated = $request->validate($this->rules);
             $dataValidated['status'] = $status;
             $dataValidated['user_id'] = auth()->user()->id;
+            $dataValidated['date'] = Carbon::parse($dataValidated['date'])->format('Y-m-d');
             $itemTransaction->update($dataValidated);
 
             $item = Item::find($dataValidated['item_id']);
             if ($status == 'in') {
-                $item->stock = $item->stock - $dataValidated['qty'];
-            } else {
                 $item->stock = $item->stock + $dataValidated['qty'];
+            } else {
+                $item->stock = $item->stock - $dataValidated['qty'];
             }
             $item->save();
 
             $data = [
                 'status' => 200,
-                'message' => 'Successfully updated item transaction',
-                'data' => $itemTransaction
+                'message' => 'Berhasil mengupdate data barang ' . ($status == 'in' ? 'masuk' : 'keluar'),
             ];
 
             \DB::commit();
@@ -134,7 +139,7 @@ class ItemTransactionController extends Controller
             \DB::rollBack();
             $data = [
                 'status' => 500,
-                'message' => $th->getMessage()
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);
@@ -159,15 +164,15 @@ class ItemTransactionController extends Controller
 
             $data = [
                 'status' => 200,
-                'message' => 'Successfully deleted item transaction',
+                'message' => 'Berhasil menghapus data barang ' . ($status == 'in' ? 'masuk' : 'keluar'),
             ];
 
             \DB::commit();
         } catch (\Throwable $th) {
             \DB::rollBack();
             $data = [
-                'status' => 200,
-                'message' => 'error',
+                'status' => 500,
+                'message' => 'Error, telah terjadi kesalahan sistem',
             ];
         }
         return response()->json($data);

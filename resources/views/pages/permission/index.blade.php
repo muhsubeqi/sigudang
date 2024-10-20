@@ -8,12 +8,16 @@
 @vite(['resources/js/pages/permission.js'])
 @endsection
 @section('content')
+<x-hero-section title="Permission" :breadcrumbs="[
+        ['label' => 'Pengaturan', 'url' => 'javascript:void(0)'],
+        ['label' => 'Permission'],
+    ]" />
 <!-- Page Content -->
 <div class="content">
     <div class="block block-rounded" id="block-permission">
         <div class="block-header block-header-default">
             <h3 class="block-title">
-                Permission <small>List</small>
+                Daftar Permission
             </h3>
             <div class="block-options">
                 <button type="button" class="btn-block-option" data-toggle="block-option" id="btn-refresh">
@@ -28,8 +32,8 @@
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 20px;">#</th>
-                        <th>Name</th>
-                        <th>Group Name</th>
+                        <th>Nama</th>
+                        <th>Group</th>
                     </tr>
                 </thead>
                 <tbody>

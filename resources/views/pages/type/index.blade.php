@@ -53,9 +53,9 @@
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 80px;">#</th>
-                                <th>Foto</th>
-                                <th>Nama</th>
-                                <th>Keterangan</th>
+                                <th class="text-start">Foto</th>
+                                <th class="text-start">Nama</th>
+                                <th class="text-start">Keterangan</th>
                                 @if (Gate::allows('type.edit') || Gate::allows('type.delete'))
                                 <th>Aksi</th>
                                 @endif
