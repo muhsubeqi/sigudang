@@ -75,13 +75,13 @@
                 </li>
                 <li class="nav-main-heading">Transaksi</li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="{{ route('item-transaction.index', ['status' => 'in']) }}">
+                    <a class="nav-main-link {{ request()->routeIs('item-transaction.index') && request()->get('status') === 'in' ? 'active' : '' }}" href="{{ route('item-transaction.index', ['status' => 'in']) }}">
                         <i class="nav-main-link-icon fas fa-folder-closed"></i>
                         <span class="nav-main-link-name">Barang Masuk</span>
                     </a>
                 </li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="{{ route('item-transaction.index', ['status' => 'out']) }}">
+                    <a class="nav-main-link {{ request()->routeIs('item-transaction.index') && request()->get('status') === 'out' ? 'active' : '' }}" href="{{ route('item-transaction.index', ['status' => 'out']) }}">
                         <i class="nav-main-link-icon fas fa-folder-open"></i>
                         <span class="nav-main-link-name">Barang Keluar</span>
                     </a>
@@ -95,13 +95,13 @@
                     </a>
                 </li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="{{ route('report.item-transaction.index', ['status' => 'in']) }}">
+                    <a class="nav-main-link {{ request()->routeIs('report.item-transaction.index') && request()->get('status') === 'in' ? 'active' : '' }}" href="{{ route('report.item-transaction.index', ['status' => 'in']) }}">
                         <i class="nav-main-link-icon fas fa-file-download"></i>
                         <span class="nav-main-link-name">Laporan Barang Masuk</span>
                     </a>
                 </li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="{{ route('report.item-transaction.index', ['status' => 'out']) }}">
+                    <a class="nav-main-link {{ request()->routeIs('report.item-transaction.index') && request()->get('status') === 'out' ? 'active' : '' }}" href="{{ route('report.item-transaction.index', ['status' => 'out']) }}">
                         <i class="nav-main-link-icon fas fa-file-upload"></i>
                         <span class="nav-main-link-name">Laporan Barang Keluar</span>
                     </a>
