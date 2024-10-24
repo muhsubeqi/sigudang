@@ -38,6 +38,7 @@
   <script src="{{ asset('js/plugins/datatables-buttons-pdfmake/vfs_fonts.js') }}"></script>
   <script src="{{ asset('js/plugins/datatables-buttons/buttons.print.min.js') }}"></script>
   <script src="{{ asset('js/plugins/datatables-buttons/buttons.html5.min.js') }}"></script>
+  <script src="{{ asset('js/plugins/datatables-buttons/buttons.colVis.min.js') }}"></script>
   <script src="{{ asset('js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 
   <!-- Modules -->

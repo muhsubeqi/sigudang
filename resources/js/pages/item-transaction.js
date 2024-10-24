@@ -35,14 +35,14 @@ $(formModal).on('show.bs.modal', function (event) {
     let date = button.data('date')
 
     const format = $('#item-transaction-table').DataTable().ajax.json().codeFormat
-  
+
     $(this).find('.block-title').text( id ? 'Edit Data' : 'Entri Data' )
     $(this).find('#id').val(id ?? '')
     $(this).find('#invoice').val(invoice ?? format)
     $(this).find('#item-id').val(item ?? '').change()
     $(this).find('#qty').val(qty ?? '')
     $(this).find('#stock').val(stock ?? '')
-    $(this).find('#date').val(date ?? '')
+    $(this).find('#date').val(date ?? $('#date').val())
     if (urlStatus == 'in') {
         $(this).find('#stock-total').val(stock + qty ?? '')
     }else{

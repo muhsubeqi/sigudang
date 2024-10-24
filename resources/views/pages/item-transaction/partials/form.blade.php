@@ -25,7 +25,7 @@
                             <label for="date" class="col-sm-3 col-form-label">Tanggal</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control js-flatpickr" id="date" name="date"
-                                    placeholder="d-m-Y" data-date-format="d-m-Y">
+                                    placeholder="d-m-Y" data-date-format="d-m-Y" value="{{ date('d-m-Y') }}">
                             </div>
                         </div>
                         <div class="row mb-3">

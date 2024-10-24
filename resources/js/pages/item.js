@@ -23,7 +23,7 @@ const dtTable =$('#item-table').DataTable({
     columns: COLUMNS,
     drawCallback: function () {
         One.block('state_normal', '#block-item')
-    }
+    },
 })
 
 $(formModal).on('show.bs.modal', function (event) {

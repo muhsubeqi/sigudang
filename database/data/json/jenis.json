@@ -1,0 +1,13 @@
+[
+    { "id": 1, "name": "ATK" },
+    { "id": 2, "name": "Bahan Baku" },
+    { "id": 3, "name": "BAN" },
+    { "id": 4, "name": "Daging" },
+    { "id": 5, "name": "Elektronik" },
+    { "id": 6, "name": "Linen" },
+    { "id": 7, "name": "Makanan" },
+    { "id": 8, "name": "Peralatan Masak" },
+    { "id": 9, "name": "Safety" },
+    { "id": 10, "name": "Softdrink" },
+    { "id": 11, "name": "Sparepart" }
+]

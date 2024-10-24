@@ -25,7 +25,7 @@ formFilter.on('submit', function (e) {
     if (!$(this).valid()) {
         return
     }
-    
+
     stock = $('#stock').val()
     btnExport.removeClass('d-none')
     One.block('state_loading', '#block-report-stock')
@@ -53,12 +53,12 @@ formFilter.on('submit', function (e) {
             </table>
         </div>`
     $('#block-report-stock').html(content)
-   
+
     $('#report-stock-table').DataTable({
         responsive: true,
         processing: false,
         serverSide: true,
-        button: [],
+        dom: '',
         ajax: {
             url: `${BASE_URL}/report/stock/list`,
             data: function (d) {

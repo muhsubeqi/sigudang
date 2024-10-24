@@ -1,0 +1,10 @@
+[
+    { "id": 1, "name": "Box" },
+    { "id": 2, "name": "Buah" },
+    { "id": 3, "name": "Drum" },
+    { "id": 4, "name": "Dus" },
+    { "id": 5, "name": "Oz" },
+    { "id": 6, "name": "Pail" },
+    { "id": 7, "name": "Pcs" },
+    { "id": 8, "name": "Unit" }
+]

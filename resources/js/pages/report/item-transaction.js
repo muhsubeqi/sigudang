@@ -64,12 +64,12 @@ formFilter.on('submit', function (e) {
         </div>`
     $('#block-report-item-transaction').html(content)
     $('#report-status-name').text(`Laporan ${statusName} ${startDate} s/d ${endDate}`)
-   
+
     $('#report-table').DataTable({
         responsive: true,
         processing: false,
         serverSide: true,
-        button: [],
+        dom: '',
         ajax: {
             url: `${BASE_URL}/report/item-transaction/list/${urlStatus}`,
             data: function (d) {

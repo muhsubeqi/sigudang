@@ -17,11 +17,11 @@ class ReportController extends Controller
     {
         $columns = [
             ["data" => 'DT_RowIndex', "name" => 'DT_RowIndex', "class" => 'text-center', "sortable" => false, "searchable" => false],
-            ["data" => 'code', "name" => 'code', "sortable" => false, "searchable" => false],
+            ["data" => 'code', "name" => 'code'],
             ["data" => 'name', "name" => 'name', "class" => "align-middle"],
-            ["data" => 'type', "name" => 'type', "class" => "align-middle"],
-            ["data" => 'stock', "name" => 'status', "class" => "align-middle"],
-            ["data" => 'unit', "name" => 'unit', "class" => "align-middle"],
+            ["data" => 'type', "name" => 'type', "class" => "align-middle", "sortable" => false, "searchable" => false],
+            ["data" => 'stock', "name" => 'stock', "class" => "align-middle"],
+            ["data" => 'unit', "name" => 'unit', "class" => "align-middle", "sortable" => false, "searchable" => false],
         ];
 
         return view('pages.report.stock.index', compact('columns'));
@@ -59,11 +59,11 @@ class ReportController extends Controller
     {
         $columns = [
             ["data" => 'DT_RowIndex', "name" => 'DT_RowIndex', "class" => 'text-center', "sortable" => false, "searchable" => false],
-            ["data" => 'invoice', "name" => 'invoice', "sortable" => false, "searchable" => false],
+            ["data" => 'invoice', "name" => 'invoice'],
             ["data" => 'date', "name" => 'date', "class" => "align-middle"],
-            ["data" => 'item', "name" => 'item', "class" => "align-middle"],
+            ["data" => 'item', "name" => 'item', "class" => "align-middle", "sortable" => false, "searchable" => false],
             ["data" => 'qty', "name" => 'qty', "class" => "align-middle"],
-            ["data" => 'unit', "name" => 'unit', "class" => "align-middle"],
+            ["data" => 'unit', "name" => 'unit', "class" => "align-middle", "sortable" => false, "searchable" => false],
         ];
         return view('pages.report.item-transaction.index', compact('columns'));
     }

@@ -29,11 +29,11 @@ class ItemController extends Controller
     {
         $columns = [
             ["data" => 'DT_RowIndex', "name" => 'DT_RowIndex', "class" => 'text-center', "sortable" => false, "searchable" => false],
-            ["data" => 'code', "name" => 'code', "sortable" => false, "searchable" => false],
+            ["data" => 'code', "name" => 'code'],
             ["data" => 'name', "name" => 'name', "class" => "align-middle"],
-            ["data" => 'unit', "name" => 'unit', "class" => "align-middle"],
-            ["data" => 'type', "name" => 'type', "class" => "align-middle"],
-            ["data" => 'stock', "name" => 'status', "class" => "align-middle"],
+            ["data" => 'unit', "name" => 'unit', "class" => "align-middle", "sortable" => false, "searchable" => false],
+            ["data" => 'type', "name" => 'type', "class" => "align-middle", "sortable" => false, "searchable" => false],
+            ["data" => 'stock', "name" => 'stock', "class" => "align-middle"],
             ["data" => 'image', "name" => 'image', "sortable" => false, "searchable" => false],
         ];
 
@@ -49,7 +49,8 @@ class ItemController extends Controller
 
     public function list(Request $request)
     {
-        $data = Item::select('*');
+        $data = Item::with(['unit', 'type'])
+            ->select('*');
         $codeFormat = AutoGetCode::store($data, 'B', 'code');
 
         return DataTables::eloquent($data)
@@ -68,7 +69,7 @@ class ItemController extends Controller
             ->addColumn('action', function (Item $item) {
                 return view('pages.item.partials.action', ['row' => $item]);
             })
-            ->rawColumns(['image', 'action'])
+            ->rawColumns(['unit','type','image', 'action'])
             ->with('codeFormat', $codeFormat)
             ->toJson();
     }

@@ -26,7 +26,7 @@ class ItemTransactionController extends Controller
     {
         $columns = [
             ["data" => 'DT_RowIndex', "name" => 'DT_RowIndex', "class" => 'text-center', "sortable" => false, "searchable" => false],
-            ["data" => 'invoice', "name" => 'invoice', "sortable" => false, "searchable" => false],
+            ["data" => 'invoice', "name" => 'invoice'],
             ["data" => 'item', "name" => 'item', "class" => "align-middle"],
             ["data" => 'qty', "name" => 'qty', "class" => "align-middle"],
             ["data" => 'date', "name" => 'date', "class" => "align-middle"],
@@ -44,7 +44,9 @@ class ItemTransactionController extends Controller
 
     public function list(Request $request, $status)
     {
-        $data = ItemTransaction::where('status', $status)->select('*');
+        $data = ItemTransaction::with('item', 'user')
+            ->where('status', $status)
+            ->select('*');
 
         if ($status == 'in') {
             $codeFormat = AutoGetCode::store($data, 'TM', 'invoice');
@@ -54,7 +56,7 @@ class ItemTransactionController extends Controller
 
         return DataTables::eloquent($data)
             ->addIndexColumn()
-            ->editColumn('item', function (ItemTransaction $itemTransaction) {
+            ->addColumn('item', function (ItemTransaction $itemTransaction) {
                 return $itemTransaction->item->code . ' - ' . $itemTransaction->item->name;
             })
             ->editColumn('user', function (ItemTransaction $itemTransaction) {
@@ -66,7 +68,7 @@ class ItemTransactionController extends Controller
             ->addColumn('action', function (ItemTransaction $itemTransaction) {
                 return view('pages.item-transaction.partials.action', ['row' => $itemTransaction]);
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['item', 'user', 'date', 'action'])
             ->with('codeFormat', $codeFormat)
             ->toJson();
     }
