@@ -34,6 +34,13 @@ $(formModal).on('show.bs.modal', function (event) {
     let type = button.data('type_id')
     let unit = button.data('unit_id')
     let stock = button.data('stock')
+    let image = button.data('image')
+
+    if (image) {
+        $(this).find('#image-preview').attr('src', `${BASE_URL}/storage/images/item/${image}`)
+    }else{
+        $(this).find('#image-preview').attr('src', `${BASE_URL}/media/custom/no-image.png`)
+    }
 
     const format = $('#item-table').DataTable().ajax.json().codeFormat
 
@@ -166,4 +173,13 @@ dtTable.on('change', '.btn-status', function () {
 btnRefresh.on('click', function () {
     dtTable.ajax.reload(null, false)
     One.block('state_loading', '#block-item')
+})
+
+$('#image').on('change', function () {
+    const file = this.files[0]
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = function () {
+        $('#image-preview').attr('src', reader.result)
+    }
 })

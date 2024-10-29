@@ -66,6 +66,7 @@ $(typeForm).on('submit', function (e) {
             sweetAlert(result.status, result.message)
             $(this)[0].reset()
             $('#id').val('')
+            $(this).find('#image-preview').attr('src', `${BASE_URL}/media/custom/no-image.png`)
         })
         .always(function() {
             dtTable.ajax.reload(null, false)
@@ -76,6 +77,14 @@ dtTable.on('click', '.btn-edit', function () {
     const id = $(this).data('id')
     const name = $(this).data('name')
     const description = $(this).data('description')
+    const image = $(this).data('image')
+    
+    if (image) {
+        typeForm.find('#image-preview').attr('src', `${BASE_URL}/storage/images/type/${image}`)
+        
+    }else{
+        typeForm.find('#image-preview').attr('src', `${BASE_URL}/media/custom/no-image.png`)
+    }
 
     typeForm.find('#id').val(id)
     typeForm.find('#name').val(name)
@@ -114,4 +123,13 @@ dtTable.on('click', '.btn-delete', function () {
 btnRefresh.on('click', function () {
     dtTable.ajax.reload(null, false)
     One.block('state_loading', '#block-type')
+})
+
+$('#image').on('change', function () {
+    const file = this.files[0]
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = function () {
+        $('#image-preview').attr('src', reader.result)
+    }
 })

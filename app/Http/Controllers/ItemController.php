@@ -29,7 +29,7 @@ class ItemController extends Controller
     {
         $columns = [
             ["data" => 'DT_RowIndex', "name" => 'DT_RowIndex', "class" => 'text-center', "sortable" => false, "searchable" => false],
-            ["data" => 'code', "name" => 'code'],
+            ["data" => 'code', "name" => 'code', "class" => "align-middle"],
             ["data" => 'name', "name" => 'name', "class" => "align-middle"],
             ["data" => 'unit', "name" => 'unit', "class" => "align-middle", "sortable" => false, "searchable" => false],
             ["data" => 'type', "name" => 'type', "class" => "align-middle", "sortable" => false, "searchable" => false],
@@ -69,7 +69,7 @@ class ItemController extends Controller
             ->addColumn('action', function (Item $item) {
                 return view('pages.item.partials.action', ['row' => $item]);
             })
-            ->rawColumns(['unit','type','image', 'action'])
+            ->rawColumns(['unit', 'type', 'image', 'action'])
             ->with('codeFormat', $codeFormat)
             ->toJson();
     }

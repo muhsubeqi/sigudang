@@ -27,6 +27,10 @@
             <div class="row mb-3">
                 <label for="image" class="col-sm-3 col-form-label">Foto</label>
                 <div class="col-sm-9">
+                    <div class="mb-4">
+                        <img class="img-fluid" src="{{ asset('media/custom/no-image.png') }}" alt="" id="image-preview"
+                            style="width: 150px; height: 100px">
+                    </div>
                     <input type="file" class="form-control" name="image" id="image">
                     <small class="text-muted" style="font-size: 12px;">
                         Keterangan : <br>
