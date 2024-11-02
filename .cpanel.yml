@@ -1,0 +1,5 @@
+---
+deployment:
+tasks:
+- export DEPLOYPATH=/home/sidt4976/public_html/sigudang.sidotechno.com
+- /bin/cp -r * $DEPLOYPATH
